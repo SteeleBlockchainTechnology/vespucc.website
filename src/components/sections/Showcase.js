@@ -6,7 +6,7 @@ import img2 from "../../assets/Nfts/market-analyst.png";
 import ETH from "../../assets/icons8-ethereum-48.png";
 
 const Section = styled.section`
-  min-height: 100vh;
+  min-height: 60vh;
   width: 100vw;
   background-color: ${(props) => props.theme.text};
   display: flex;
@@ -114,7 +114,7 @@ const AgentItem = ({ img, number, passRef, name }) => {
   };
 
   return (
-    <ImgContainer onMouseOver={(e) => pause(e)} onMouseOut={(e) => play(e)}>
+    <ImgContainer>
       <img width={500} height={400} src={img} alt="Agents" />
       <Details>
         <div>

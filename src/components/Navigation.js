@@ -5,8 +5,25 @@ import Logo from "./Logo";
 
 const Section = styled.section`
   width: 100vw;
-  background-color: ${(props) => props.theme.body};
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0
+  ); /* White semi-transparent background */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: perspective(1000px) rotateX(5deg);
+  transform-origin: top;
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  height: ${(props) => props.theme.navHeight};
+
+  /* Shadow for depth */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 `;
+
 const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -158,7 +175,7 @@ const Navigation = () => {
           <MenuItem onClick={() => scrollTo("about")}>About</MenuItem>
           <MenuItem onClick={() => scrollTo("roadmap")}>Roadmap</MenuItem>
           <MenuItem onClick={() => scrollTo("showcase")}>Showcase</MenuItem>
-          <MenuItem onClick={() => scrollTo("team")}>Team</MenuItem>
+          {/*<MenuItem onClick={() => scrollTo("team")}>Team</MenuItem>*/}
           <MenuItem onClick={() => scrollTo("faq")}>Faq</MenuItem>
           <MenuItem>
             <div className="mobile">

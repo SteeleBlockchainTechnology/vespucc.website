@@ -1,5 +1,3 @@
-
-
 import GlobalStyles from "./styles/GlobalStyles";
 import { light } from "./styles/Themes";
 import { ThemeProvider } from "styled-components";
@@ -35,17 +33,16 @@ function App() {
       <GlobalStyles />
       <ThemeProvider theme={light}>
         {/* <Suspense fallback={<Loading />}> */}
-          <Navigation />
-          <Home />
-          <About />
-          <Roadmap />
-          <Showcase />
-          <Team />
-          <Faq />
-          <Footer />
-          {/* <ScrollToTop scrollPosition={y}/> */}
-          <ScrollToTop />{" "}
-        {/* </Suspense> */}
+        <Navigation />
+        <Home />
+        <About />
+        <Roadmap />
+        <Showcase />
+        {/*<Team />*/}
+        <Faq />
+        <Footer />
+        {/* <ScrollToTop scrollPosition={y}/> */}
+        <ScrollToTop /> {/* </Suspense> */}
       </ThemeProvider>
     </main>
   );

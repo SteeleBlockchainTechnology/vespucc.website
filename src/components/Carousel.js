@@ -10,14 +10,6 @@ import { Pagination, Navigation, Autoplay, EffectCards } from "swiper/modules";
 
 import img1 from "../assets/Nfts/market-analyst.png";
 import img2 from "../assets/Nfts/content-creator.png";
-import img3 from "../assets/Nfts/bighead-2.svg";
-import img4 from "../assets/Nfts/bighead-3.svg";
-import img5 from "../assets/Nfts/bighead-4.svg";
-import img6 from "../assets/Nfts/bighead-5.svg";
-import img7 from "../assets/Nfts/bighead-6.svg";
-import img8 from "../assets/Nfts/bighead-7.svg";
-import img9 from "../assets/Nfts/bighead-8.svg";
-import img10 from "../assets/Nfts/bighead-9.svg";
 
 import Arrow from "../assets/Arrow.svg";
 
@@ -32,14 +24,17 @@ const Container = styled.div`
   @media (max-width: 64em) {
     height: 50vh;
     width: 30vw;
+    margin-top: 12rem;
   }
   @media (max-width: 48em) {
     height: 50vh;
     width: 40vw;
+    margin-top: 12rem;
   }
-  @media (max-width: 30em) {
+  @media (max-width: 39em) {
     height: 45vh;
     width: 60vw;
+    margin-top: 0px;
   }
 
   .swiper {

@@ -79,13 +79,13 @@ const TypeWriterText = () => {
           }}
           onInit={(typewriter) => {
             typewriter
-              .typeString(`<span class="text-1">Vespucc.ai</span>`)
+              .typeString(`<span class="text-1">Market Analyst</span>`)
               .pauseFor(2000)
               .deleteAll()
-              .typeString(`<span class="text-2">Technical Analyst</span>`)
+              .typeString(`<span class="text-2">Content Creator</span>`)
               .pauseFor(2000)
               .deleteAll()
-              .typeString(`<span class="text-3">Marketing Specialist</span>`)
+              .typeString(`<span class="text-3">Researcher</span>`)
               .pauseFor(2000)
               .deleteAll()
               .start();

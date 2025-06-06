@@ -4,22 +4,29 @@ import styled, { keyframes } from "styled-components";
 // import TypeWriterText from '../TypeWriterText'
 import Logo from "../../assets/logo-transparent.png";
 import Loading from "../Loading";
+import hero from "../../assets/Hero.mp4"; // Background image for the home section
 
 const CoverVideo = lazy(() => import("../CoverVideo"));
 const TypeWriterText = lazy(() => import("../TypeWriterText"));
 
 const Section = styled.section`
-  min-height: ${(props) => `calc(100vh - ${props.theme.navHeight})`};
+  min-height: 100vh;
   width: 100vw;
   position: relative;
-  background-color: ${(props) => props.theme.body};
 `;
-
+const VideoBackground = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the entire area */
+  z-index: -1; /* Place behind content */
+`;
 const Container = styled.div`
   width: 75%;
   min-height: 80vh;
   margin: 0 auto;
-  /* background-color: lightblue; */
 
   display: flex;
   justify-content: center;
@@ -66,20 +73,25 @@ const Round = styled.div`
     animation: ${rotate} 12s linear infinite reverse;
   }
   @media (max-width: 64em) {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     left: none;
     right: 2rem;
-    bottom: calc(100% - 1rem);
+    bottom: calc(100% - 4.6rem);
+    z-index: 1001;
   }
   @media (max-width: 48em) {
-    right: 1rem;
+    right: 2rem;
   }
 `;
 
 const Home = () => {
   return (
     <Section id="home">
+      <VideoBackground autoPlay muted loop>
+        <source src={hero} type="video/mp4" />
+        Your browser does not support the video tag.
+      </VideoBackground>
       <Container>
         <Box>
           <Suspense fallback={<Loading />}>

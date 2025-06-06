@@ -9,6 +9,7 @@ const Carousel = lazy(() => import("../Carousel"));
 
 const Section = styled.section`
   min-height: 100vh;
+  max-height: 100vh;
   width: 100%;
   background-color: ${(props) => props.theme.text};
   display: flex;
@@ -16,11 +17,13 @@ const Section = styled.section`
   align-items: center;
   position: relative;
   overflow: hidden;
+  @media (max-width: 60em) {
+    max-height: 60vh;
+  }
 `;
 const Container = styled.div`
   width: 75%;
   margin: 0 auto;
-  /* background-color: lightblue; */
 
   display: flex;
   justify-content: center;
@@ -53,9 +56,11 @@ const Box = styled.div`
   align-items: center;
 
   @media (max-width: 40em) {
-    min-height: 50vh;
+    min-height: 40vh;
   }
-`;
+  &:nth-child(2) {
+    ;
+  `;
 
 const Title = styled.h2`
   font-size: ${(props) => props.theme.fontxxl};
