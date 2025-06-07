@@ -9,7 +9,7 @@ const Section = styled.section`
     255,
     255,
     255,
-    0
+    0.15
   ); /* White semi-transparent background */
   position: absolute;
   top: 0;
@@ -28,11 +28,16 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   width: 85%;
   height: ${(props) => props.theme.navHeight};
   margin: 0 auto;
 
+  .logo-container {
+    position: relative;
+    left: -30px; /* Position at far left */
+  }
   .mobile {
     display: none;
   }
@@ -43,6 +48,11 @@ const NavBar = styled.nav`
     }
     .mobile {
       display: inline-block;
+    }
+  }
+  @media (max-width: 48em) {
+    .logo-container {
+      display: none;
     }
   }
 `;
@@ -101,14 +111,32 @@ const MenuItem = styled.li`
     }
   }
 `;
+const HamburgerWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  padding: 15px; /* Create large clickable area */
+  z-index: 1000;
+
+  display: none;
+
+  @media (max-width: 64em) {
+    display: block;
+  }
+
+  @media (max-width: 48em) {
+    left: 0; /* Reset the left positioning */
+    transform: none; /* Remove translateX */
+    padding: 15px 15px 15px 0; /* Adjust padding for left alignment */
+  }
+`;
 const HamburgerMenu = styled.span`
   width: ${(props) => (props.click ? "2rem" : "1.5rem")};
-
   height: 2px;
   background: ${(props) => props.theme.text};
 
   position: absolute;
-  top: 2rem;
   left: 50%;
   transform: ${(props) =>
     props.click
@@ -127,6 +155,12 @@ const HamburgerMenu = styled.span`
     display: flex;
   }
 
+  @media (max-width: 33em) {
+    left: 0; /* Reset the left positioning */
+    right: auto; /* Position from the right */
+    transform: ${(props) =>
+      props.click ? "rotate(90deg)" : "rotate(0)"}; /* Remove translateX */
+  }
   &::after,
   &::before {
     content: " ";
@@ -166,10 +200,12 @@ const Navigation = () => {
   return (
     <Section id="navigation">
       <NavBar>
-        <Logo />
-        <HamburgerMenu click={+click} onClick={() => setClick(!click)}>
-          &nbsp;
-        </HamburgerMenu>
+        <div className="logo-container">
+          <Logo />
+        </div>
+        <HamburgerWrapper onClick={() => setClick(!click)}>
+          <HamburgerMenu click={+click}>&nbsp;</HamburgerMenu>
+        </HamburgerWrapper>
         <Menu click={+click}>
           <MenuItem onClick={() => scrollTo("home")}>Home</MenuItem>
           <MenuItem onClick={() => scrollTo("about")}>About</MenuItem>

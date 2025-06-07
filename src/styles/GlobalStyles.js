@@ -1,16 +1,21 @@
 import { createGlobalStyle } from "styled-components";
-import "@fontsource/akaya-telivigala"
-import "@fontsource/sora"
-
-
-
+import "@fontsource/akaya-telivigala";
+import "@fontsource/sora";
+import "@fontsource/charm";
+import "@fontsource/cinzel";
+import "@fontsource/cinzel/400.css";
+import "@fontsource/cinzel/500.css";
+import "@fontsource/cinzel/600.css";
+import "@fontsource/cinzel/700.css";
+import "@fontsource/cinzel/900.css";
 
 const GlobalStyles = createGlobalStyle`
-
-${'' /* 
+${
+  "" /* 
 *{
     outline: 1px solid red !important;
-} */}
+} */
+}
 
 html{
     scroll-behavior: smooth;
@@ -33,6 +38,6 @@ a{
     color: inherit;
     text-decoration:none;
 }
-`
+`;
 
 export default GlobalStyles;

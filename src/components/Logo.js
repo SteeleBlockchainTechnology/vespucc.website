@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LogoText = styled.h1`
-  font-family: "Akaya Telivigala", cursive;
-  font-size: ${(props) => props.theme.fontxxxl};
+  font-family: "Cinzel", cursive;
+  letter-spacing: 0.1em;
+  font-size: ${(props) => props.theme.fontxl};
   color: ${(props) => props.theme.text};
   transition: all 0.2s ease;
 
@@ -13,14 +14,18 @@ const LogoText = styled.h1`
   }
 
   @media (max-width: 64em) {
-    font-size: ${(props) => props.theme.fontxxl};
+    font-size: ${(props) => props.theme.fontxl};
+  }
+
+  @media (max-width: 30em) {
+    font-size: ${(props) => props.theme.fontxl};
   }
 `;
 
 const Logo = () => {
   return (
     <LogoText>
-      <Link to="/">Vespucc.ai</Link>
+      <Link to="/">vespucc.ai</Link>
     </LogoText>
   );
 };
