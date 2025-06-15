@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 // import TypeWriterText from '../TypeWriterText'
 import Logo from "../../assets/logo-transparent.png";
 import Loading from "../Loading";
-import hero from "../../assets/Hero.mp4"; // Background image for the home section
+import hero from "../../assets/Hero2160.mp4"; // Background image for the home section
 
 const CoverVideo = lazy(() => import("../CoverVideo"));
 const TypeWriterText = lazy(() => import("../TypeWriterText"));
@@ -24,7 +24,7 @@ const VideoBackground = styled.video`
   z-index: -1; /* Place behind content */
 `;
 const Container = styled.div`
-  width: 75%;
+  width: 85%;
   min-height: 80vh;
   margin: 0 auto;
 

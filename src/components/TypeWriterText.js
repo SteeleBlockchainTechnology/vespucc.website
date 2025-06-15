@@ -107,7 +107,10 @@ const TypeWriterText = () => {
                   .typeString(`<span class="text-2">Content Creator</span>`)
                   .pauseFor(2000)
                   .deleteAll()
-                  .typeString(`<span class="text-3">Research Agent</span>`)
+                  .typeString(`<span class="text-3">Website Automation</span>`)
+                  .pauseFor(2000)
+                  .deleteAll()
+                  .typeString(`<span class="text-1">Blender Agent</span>`)
                   .pauseFor(2000)
                   .deleteAll()
                   .start();

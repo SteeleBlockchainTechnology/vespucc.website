@@ -6,7 +6,8 @@ export const light = {
   bodyRgba: "255, 255, 255",
   textRgba: "32,32,32",
 
-  carouselColor: "#EEEDDE",
+  aboutBackground: "#07090D",
+  carouselColor: "rgba(255, 255, 255, 0.3)",
 
   fontxs: "0.75em",
   fontsm: "0.875em",
@@ -27,6 +28,7 @@ export const dark = {
   bodyRgba: "32,32,32",
   textRgba: "255, 255, 255",
 
+  aboutBackground: "#593841",
   carouselColor: "#EEEDDE",
 
   fontxs: "0.75em",

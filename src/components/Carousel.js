@@ -44,9 +44,7 @@ const Container = styled.div`
 
   .swiper-slide {
     background-color: ${(props) => props.theme.carouselColor};
-
-    border-radius: 20px;
-
+    border-radius: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,6 +54,17 @@ const Container = styled.div`
       width: 100%;
       height: auto;
       object-fit: cover;
+      transition: opacity 0.3s ease; /* Smooth transition for images */
+    }
+
+    /* Hide only the images in cards that are not active */
+    &:not(.swiper-slide-active) img {
+      opacity: 0;
+    }
+
+    /* Show images only in the active card */
+    &.swiper-slide-active img {
+      opacity: 1;
     }
   }
 

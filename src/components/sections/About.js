@@ -11,7 +11,7 @@ const Section = styled.section`
   min-height: 100vh;
   max-height: 100vh;
   width: 100%;
-  background-color: ${(props) => props.theme.text};
+  background-color: ${(props) => props.theme.aboutBackground};
   display: flex;
   justify-content: center;
   align-items: center;
