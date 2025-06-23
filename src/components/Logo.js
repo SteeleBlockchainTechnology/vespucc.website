@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LogoText = styled.h1`
-  font-family: "Cinzel", cursive;
+  font-family: "Cinzel", serif; // Changed from 'cursive' to 'serif'
   letter-spacing: 0.1em;
   font-size: ${(props) => props.theme.fontxl};
+
   color: ${(props) => props.theme.text};
   transition: all 0.2s ease;
 
@@ -25,7 +26,7 @@ const LogoText = styled.h1`
 const Logo = () => {
   return (
     <LogoText>
-      <Link to="/">vespucc.ai</Link>
+      <Link to="/">Vespucc.AI</Link>
     </LogoText>
   );
 };

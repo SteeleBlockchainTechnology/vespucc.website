@@ -1,9 +1,11 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useRef, useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 // import Carousel from '../Carousel'
 import Button from "../Button";
 import { dark } from "../../styles/Themes";
 import Loading from "../Loading";
+import backgroundDesktop from "../../assets/nft-desktop.mp4";
+import backgroundMobile from "../../assets/nft-mobile.mp4";
 
 const Carousel = lazy(() => import("../Carousel"));
 
@@ -17,14 +19,27 @@ const Section = styled.section`
   align-items: center;
   position: relative;
   overflow: hidden;
+  z-index: 1;
   @media (max-width: 60em) {
     max-height: 60vh;
+  }
+`;
+const VideoBackground = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: -1;
+
+  @media (max-width: 64em) {
+    object-fit: cover;
   }
 `;
 const Container = styled.div`
   width: 75%;
   margin: 0 auto;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,8 +61,9 @@ const Container = styled.div`
     }
   }
 `;
-const Box = styled.div`
-  width: 50%;
+
+const Box1 = styled.div`
+  width: 60%;
   height: 100%;
   min-height: 60vh;
   display: flex;
@@ -55,10 +71,32 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media (max-width: 64em) {
+    width:50%;
+  }
   @media (max-width: 40em) {
     min-height: 40vh;
   }
   &:nth-child(2) {
+    ;
+  `;
+
+const Box = styled.div`
+  width: 40%;
+  height: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 64em) {
+    width: 50%;
+  }
+  @media (max-width: 40em) {
+    min-height: 40vh;
+  }
+  &:nth-child(2) {
+  
     ;
   `;
 
@@ -137,38 +175,107 @@ const ButtonContainer = styled.div`
 `;
 
 const About = () => {
+  const videoRef = useRef(null);
+  const sectionRef = useRef(null);
+  const hasPlayedRef = useRef(false);
+
+  // Function to get appropriate video source based on screen size
+  const getVideoSource = () => {
+    const width = window.innerWidth;
+
+    if (width >= 1024) {
+      return backgroundDesktop;
+    } else {
+      return backgroundMobile;
+    }
+  };
+
+  const [videoSource, setVideoSource] = useState(getVideoSource());
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newSource = getVideoSource();
+      if (newSource !== videoSource) {
+        setVideoSource(newSource);
+        hasPlayedRef.current = false; // Reset to allow replay with new video
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [videoSource]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+
+    if (!video || !section) return;
+
+    // Configure video
+    video.muted = true;
+    video.loop = false;
+    video.preload = "metadata";
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasPlayedRef.current) {
+            // Section is visible and video hasn't played yet
+            video.play().catch((error) => {
+              console.log("Video play failed:", error);
+            });
+
+            // Mark as played once video starts
+            hasPlayedRef.current = true;
+          }
+        });
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of the section is visible
+        rootMargin: "0px 0px -10% 0px", // Start playing slightly before fully visible
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <Section id="about">
+    <Section id="about" ref={sectionRef}>
+      <VideoBackground
+        ref={videoRef}
+        muted
+        playsInline
+        preload="metadata"
+        key={videoSource} // Force re-render when source changes
+      >
+        <source src={videoSource} type="video/mp4" />
+        Your browser does not support the video tag.
+      </VideoBackground>
       <Container>
-        <Box>
-          <Suspense fallback={<Loading />}>
-            <Carousel />{" "}
-          </Suspense>{" "}
-        </Box>
+        <Box1></Box1>
         <Box>
           <Title>
-            Welcome To The <br /> Vespucc.ai.
+            Welcome To <br /> Vespucc.ai.
           </Title>
           <SubText>
-            <SubText>
-              Vespucc.ai is a cutting-edge platform uniting AI and blockchain.
-              Powered by our native Solana token, users access a vibrant
-              ecosystem of AI agents.
-            </SubText>
+            Vespucc.ai is a platform uniting AI and the Blockchain. Powered by
+            our native Solana token, users access a vibrant ecosystem of AI
+            agents.
           </SubText>
           <SubTextLight>
-            <SubTextLight>
-              Discover a diverse ecosystem of AI agents powered by our native
-              Solana token. Join a dynamic community of innovators, leveraging
-              the Model Context Protocol (MCP) and langchain for seamless AI and
-              blockchain integration.
-            </SubTextLight>
+            Discover a diverse ecosystem of AI agents. Join a dynamic community
+            of innovators, leveraging the Model Context Protocol (MCP) and
+            langchain for seamless AI and blockchain integration.
           </SubTextLight>
           <ButtonContainer>
             <ThemeProvider theme={dark}>
               <Button
                 text="JOIN OUR DISCORD"
-                link="https://discord.gg/MZy7bBfqn2"
+                link="https://discord.gg/smEzqYYxdX"
                 newTab={true}
               />
             </ThemeProvider>

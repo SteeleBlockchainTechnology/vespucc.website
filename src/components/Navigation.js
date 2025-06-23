@@ -14,7 +14,7 @@ const Section = styled.section`
   position: absolute;
   top: 0;
   left: 0;
-  transform: perspective(1000px) rotateX(5deg);
+  transform: perspective(1000px) rotateX(3deg);
   transform-origin: top;
   backdrop-filter: blur(8px);
   z-index: 1000;
@@ -33,7 +33,6 @@ const NavBar = styled.nav`
   width: 85%;
   height: ${(props) => props.theme.navHeight};
   margin: 0 auto;
-
   .logo-container {
     position: relative;
     left: -30px; /* Position at far left */
@@ -210,17 +209,19 @@ const Navigation = () => {
           <MenuItem onClick={() => scrollTo("home")}>Home</MenuItem>
           <MenuItem onClick={() => scrollTo("about")}>About</MenuItem>
           <MenuItem onClick={() => scrollTo("roadmap")}>Roadmap</MenuItem>
-          <MenuItem onClick={() => scrollTo("showcase")}>Showcase</MenuItem>
+          {/*<MenuItem onClick={() => scrollTo("showcase")}>Showcase</MenuItem>*/}
           {/*<MenuItem onClick={() => scrollTo("team")}>Team</MenuItem>*/}
           <MenuItem onClick={() => scrollTo("faq")}>Faq</MenuItem>
+          <MenuItem onClick={() => scrollTo("marketplace")}>AI Market</MenuItem>
+
           <MenuItem>
             <div className="mobile">
-              <Button text="Connect Wallet" link="https://google.com" />
+              <Button text="Connect Wallet" link="/" />
             </div>
           </MenuItem>
         </Menu>
         <div className="desktop">
-          <Button text="Connect Wallet" link="https://google.com" />
+          <Button text="Connect Wallet" link="/" />
         </div>
       </NavBar>
     </Section>

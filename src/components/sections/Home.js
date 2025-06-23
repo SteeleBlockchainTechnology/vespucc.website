@@ -97,9 +97,7 @@ const Home = () => {
             <TypeWriterText />
           </Suspense>
         </Box>
-        <Box>
-          <Suspense fallback={<Loading />}>{/* <CoverVideo /> */}</Suspense>
-        </Box>
+        <Box></Box>
 
         <Round>
           <img width={500} height={400} src={Logo} alt="Logo" />

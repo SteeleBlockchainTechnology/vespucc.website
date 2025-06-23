@@ -9,7 +9,6 @@ const TransparentContainer = styled.div`
   padding: 2rem;
   border-radius: 3px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  max-width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -23,6 +22,7 @@ const Title = styled.h2`
   width: 80%;
   color: ${(props) => props.theme.text};
   align-self: flex-start;
+  margin: 0 0;
 
   .typewriter-container {
     height: 2.4em; /* Increased to accommodate two lines */
@@ -101,16 +101,13 @@ const TypeWriterText = () => {
               }}
               onInit={(typewriter) => {
                 typewriter
-                  .typeString(`<span class="text-1">Market Analyst</span>`)
+                  .typeString(`<span class="text-1">Market<br/>Analyst</span>`)
                   .pauseFor(2000)
                   .deleteAll()
-                  .typeString(`<span class="text-2">Content Creator</span>`)
+                  .typeString(`<span class="text-2">Content<br/>Creator</span>`)
                   .pauseFor(2000)
                   .deleteAll()
-                  .typeString(`<span class="text-3">Website Automation</span>`)
-                  .pauseFor(2000)
-                  .deleteAll()
-                  .typeString(`<span class="text-1">Blender Agent</span>`)
+                  .typeString(`<span class="text-3">Blender<br/>Agent</span>`)
                   .pauseFor(2000)
                   .deleteAll()
                   .start();
