@@ -1,5 +1,6 @@
 {
   "name": "vespucc.ai",
+  "homepage": "https://SteeleBlockchainTechnology.github.io/vespucc.website", 
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - mobile # Or your default branch, e.g., master
+      - main # Or your default branch, e.g., master
   workflow_dispatch: # Allows manual triggering
 
 permissions:
@@ -24,16 +24,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x" # Specify your Node.js version
+          node-version: "20.x"
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build project
-        run: npm run build # Uses the build script from package.json
+        run: npm run build
         env:
-          CI: true # Often used by build tools
+          CI: false # Disable treating warnings as errors
+          GENERATE_SOURCEMAP: false # Reduce build size
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -41,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./dist" # Vite's default build output directory
+          path: "./build" # Changed from "./dist" to "./build" for React
 
       - name: Deploy to GitHub Pages
         id: deployment
