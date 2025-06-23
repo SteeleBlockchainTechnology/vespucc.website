@@ -26,7 +26,7 @@ const LogoText = styled.h1`
 const Logo = () => {
   return (
     <LogoText>
-      <Link to="/">Vespucc.AI</Link>
+      <Link to="/vespucc.website/">Vespucc.AI</Link>
     </LogoText>
   );
 };

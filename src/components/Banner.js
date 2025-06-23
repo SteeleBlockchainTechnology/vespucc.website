@@ -131,7 +131,7 @@ const Banner = () => {
         <br /> Frontier of AI{" "}
       </Title>
       <BtnContainer>
-        <JoiNow href={"/#"} target="_blank">
+        <JoiNow href={"/vespucc.website/"} target="_blank">
           Discover
         </JoiNow>
       </BtnContainer>

@@ -216,12 +216,12 @@ const Navigation = () => {
 
           <MenuItem>
             <div className="mobile">
-              <Button text="Connect Wallet" link="/" />
+              <Button text="Connect Wallet" link="/vespucc.website/" />
             </div>
           </MenuItem>
         </Menu>
         <div className="desktop">
-          <Button text="Connect Wallet" link="/" />
+          <Button text="Connect Wallet" link="/vespucc.website/" />
         </div>
       </NavBar>
     </Section>
