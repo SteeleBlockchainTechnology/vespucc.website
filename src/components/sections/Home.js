@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import styled, { keyframes } from "styled-components";
 // import CoverVideo from '../CoverVideo'
 // import TypeWriterText from '../TypeWriterText'
-import Logo from "../../assets/logo-transparent.png";
+import Logo from "../../assets/logo.png";
 import Loading from "../Loading";
 import hero from "../../assets/website-hero.mp4"; // Background image for the home section
 
@@ -62,9 +62,6 @@ const Round = styled.div`
   right: calc(90% - 3rem);
   width: 9rem;
   height: 9rem;
-  border: 1px solid ${(props) => props.theme.text};
-  border-radius: 50%;
-  background-color: black;
 
   img {
     width: 100%;

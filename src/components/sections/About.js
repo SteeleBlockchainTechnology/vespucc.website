@@ -28,13 +28,14 @@ const VideoBackground = styled.video`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
+  max-width: 180%;
   object-fit: fill;
   z-index: -1;
 
   @media (max-width: 64em) {
-    object-fit: cover;
+    object-fit: fill;
+    width: 100%;
   }
 `;
 const Container = styled.div`
